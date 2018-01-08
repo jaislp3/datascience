@@ -1,2 +1,2 @@
 # datascience
-Repository created during   NYCDSA bootcamp
+Welcome to my Github repo.
