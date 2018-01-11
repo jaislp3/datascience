@@ -1,0 +1,111 @@
+#Exercise 1
+pwd
+cd nyc/git_proj/
+#1. Create a directory named test and make test a git repository.
+
+mkdir test
+cd test/
+init git
+
+#2. Create a file named a.txt with the content "Git is good"ù under #test and add a.txt to the staging area.
+
+vi  a.txt
+"Git is good"
+#ESC, ZZ to save the text file.
+git add  .
+
+#3. Run the command git status and check the output.
+git status
+
+#4. Now commit your changes and check the output of git status.
+git commit -m "a.txt"
+git status
+
+#Exercise 2:
+cd test/
+
+#1. Create a new directory named subtest under test repo and add a #file b.txt into it, #the content can be anything.
+mkdir subtest
+cd subtest/
+vi  b.txt
+This is a text file created in subtest directory.
+subtest is a new directory under test repository.
+#ESC, ZZ to save
+
+#2. Add some more files, for example a1.txt, a2.txt, to test repo and #then add all of them to the staging area.
+cd test/
+vi  a1.txt
+This is the second ext file created in test repository.
+#ESC, ZZ to save
+
+vi   a2.txt
+This is the third file created in test repository.
+#ESC, ZZ to save
+
+git add a1.txt a2.txt subtest/ .
+
+#3. Run git status to make sure you have everything in the staging #area and then commit them.
+git status
+git commit -m "All files are added"
+
+#4. Display all the commits done so far.
+git log --oneline
+
+#Exercise 3:
+cd ~/nyc/git_proj/test/
+
+#1. Create a new repository with the name test under your Github #account and follow #the instruction on Github to link the remote #repository with the local one you just #created in question 
+
+git clone https://github.com/jaislp3/test.git
+git remote -v
+git push origin master
+
+#2. Add a new line "Github is awesome"ù to the file a.txt under the #local repo #test and then add the change to the staging area.
+
+vi a.txt
+#Adding second line:
+"Github is awesome"
+#ESC, ZZ to save
+
+git add .
+git status
+
+#3.Now a.txt has two versions. Use diff to show the difference between #the old #version that we just committed and the new one in the #staging area.
+
+git diff  --staged
+
+#4. Commit the changes and push it to the remote repo.
+
+git commit  -m "Updated a.txt"
+git status
+git push origin master
+
+#Exercise 4
+#1. Read [this tutorial]#(https://www.atlassian.com/git/tutorials/resetting-checking-#out-#and-reverting) and finish the following questions using the right #commands.
+
+#2. Edit a1.txt and add it to the staging area and then try to undo #the changes.
+
+ vi a1.txt
+"Editing the file"
+#ESC, ZZ
+git add .
+git reset                     #reset for undoing uncommitted changes; 
+#unstaged  changes after reset 
+
+#3. Edit the file a1.txt and commit it to the repository and then try #to undo the changes you just committed.
+
+ vi a1.txt
+"Editing the file"
+#ESC, ZZ
+
+git add .
+git commit -m  "Editing a1.txt"
+git revert    HEAD      #safe way of undoing changes by creating a new                         #commit
+#message: a1.txt recovered
+
+#git checkout reference no.               #undo the changes (or)
+#git checkout HEAD~1
+#git revert HEAD~1
+
+
+
